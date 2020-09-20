@@ -58,6 +58,9 @@ public class SwiftFlutterAudioRecorderPlugin: NSObject, FlutterPlugin, AVAudioRe
                 print("path: " + mPath)
             }
             
+            // resolve the path with " "(space)
+            mPath = mPath.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed) ?? ""
+            
             settings = [
                 AVFormatIDKey: getOutputFormatFromString(mExtension),
                 AVSampleRateKey: mSampleRate,
